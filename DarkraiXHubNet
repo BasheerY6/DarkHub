@@ -1,0 +1,153 @@
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Kavo-Ui/main/Darkrai%20Ui", true))()
+local Library = DarkraiX:Window("Darkrai X","","",Enum.KeyCode.RightControl);
+
+
+MainTab1 = Library:Tab("Main")
+MainTab2 = Library:Tab("MISC")
+MainTab3 = Library:Tab("Teleports")
+
+MainTab3:Seperator("Areas Teleports Coming Soon ")
+
+
+
+getgenv().Start = false
+getgenv().Rebirth = false
+getgenv().Prestige = false
+getgenv().Transform = false
+getgenv().Technique = false
+getgenv().Charge = false
+getgenv().Areas = false
+
+
+
+function DoStart()
+    spawn (function()
+        while getgenv().Start == true do
+            --Script start
+                local args = {[1] = {["Type"] = 1,["Began"] = true,["CFrame"] =r CFame.new(1820.92626953125, 577.9718627929688, 1331.8953857421875) * CFrame.Angles(-5.872763608749665e-09, 0.3885195851325989, -5.483121867655427e-08),["Aim"] = CFrame.new(1821.4085693359375, 574.7481689453125, 1337.677978515625) * CFrame.Angles(-2.7635703086853027, -0.6902211308479309, -2.893933057785034),["Camera"] = CFrame.new(1801.221435546875, 583.7703247070312, 1314.9586181640625) * CFrame.Angles(-2.898599147796631, -0.8460285067558289, -2.9580953121185303),["Name"] = "Combat",["Target"] = workspace:FindFirstChild("World Map").Islands:FindFirstChild("Kame Island").Island.Path.Part,["IsHeavy"] = false,["Velocity"] = Vector3.new(0, 0, 0)}}
+                game:GetService("ReplicatedStorage").Remotes.SkillRemote:FireServer(unpack(args))
+            --Script end
+            wait(.1)
+        end
+    end)
+end
+
+
+function DoRebirth()
+    spawn (function()
+        while getgenv().Rebirth == true do
+            game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.StatsService.RebirthUp:FireServer()
+            wait(.1)
+        end
+    end)
+end
+
+
+function DoPrestige()
+    spawn (function()
+        while getgenv().Prestige == true do
+            local args = {  [1] = { ["Description"] = "Gain Prestige?\n(Rebirth,Power,SkillPoints will be reset!)",["Prompt"] = "PrestigeUp", ["RightButton"] = "Decline", ["LeftButton"] = "Accept"  }, [2] = "Accept"}
+            game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.Props.PromptService.Prompt:FireServer(unpack(args))
+            wait(.1)
+        end
+    end)
+end
+
+
+function DoTransform()
+    spawn (function()
+        while getgenv().Transform == true do
+            local args = {[1] = "TWDS"}
+            game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.Props.ModeTransformService.Transformation:FireServer(unpack(args))
+            wait(.1)
+        end
+    end)
+end
+
+
+function DoTechnique()
+    spawn (function()
+        while getgenv().Technique == true do
+            local args = {[1] = {["Began"] = true,["Type"] = 1,["Name"] = "Technique"}}
+            game:GetService("ReplicatedStorage").Remotes.SkillRemote:FireServer(unpack(args))
+            wait(.1)
+        end
+    end)
+end
+
+
+function DoCharge()
+    spawn (function()
+        while getgenv().Charge == true do
+            local args = {[1] = {["Began"] = true,["Type"] = 1,["Description"] = "Charge",["Description"] = "Charge",["Name"] = "Skill"}}
+            game:GetService("ReplicatedStorage").Remotes.SkillRemote:FireServer(unpack(args))
+            wait(1.)
+        end
+    end)
+end
+
+
+function DoAreas()
+    spawn (function()
+        while getgenv().Areas == true do
+            local args = {[1] = {["Type"] = 1,["Description"] = "Trunks Sword Skill",["Began"] = true,["CFrame"] = CFrame.new(1751, -85.0585708618164, 2802) * CFrame.Angles(-0, 0, -0), ["Aim"] = CFrame.new(1743.5645751953125, -74.23056030273438, 2818.966796875) * CFrame.Angles(-0.039529167115688324, 0.347769170999527, 0.01347779855132103), ["Camera"] = CFrame.new(1751, -73.42002868652344, 2839.45947265625) * CFrame.Angles(-0.26183196902275085, 0, -0),["Name"] = "Skill",["Target"] = workspace:FindFirstChild("World Map"):FindFirstChild("Multiplier Zones"):FindFirstChild("Capsule Ship"):FindFirstChild("Capsule Spaceship Interior").Capsule.Technology:FindFirstChild("Tech Part 2 (380)"),["Velocity"] = Vector3.new(0, 0, 0)}}
+            game:GetService("ReplicatedStorage").Remotes.SkillRemote:FireServer(unpack(args))
+            wait(1.)
+        end
+    end)
+end
+
+
+MainTab1:Toggle("Auto Punch Exp",false,function(bool)
+    getgenv().Start = bool
+   if bool then 
+    DoStart();
+    end
+end)
+
+
+MainTab1:Toggle("Auto Rebirth",false,function(bool)
+    getgenv().Rebirth = bool
+   if bool then 
+    DoRebirth();
+    end
+end)
+
+MainTab1:Toggle("Auto Prestige",false,function(bool)
+    getgenv().Prestige = bool
+   if bool then 
+    DoPrestige();
+    end
+end)
+
+MainTab1:Toggle("Auto Transform",false,function(bool)
+    getgenv().Transform = bool
+   if bool then 
+    DoTransform();
+    end
+end)
+
+
+MainTab2:Toggle("Auto Technique",false,function(bool)
+    getgenv().Technique = bool
+   if bool then 
+    DoTechnique();
+    end
+end)
+
+
+
+MainTab2:Toggle("Auto Charge",false,function(bool)
+    getgenv().Charge = bool
+   if bool then 
+    DoCharge();
+    end
+end)
+
+
+MainTab1:Toggle("Auto Multiplier Areas",false,function(bool)
+    getgenv().Areas = bool
+   if bool then 
+    DoAreas();
+    end
+end)
